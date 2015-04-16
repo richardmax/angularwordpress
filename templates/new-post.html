@@ -1,0 +1,25 @@
+<!--
+	ng-new-post inputs
+	WARNING: Do not change the name attribute for the inputs or it will break the form
+    
+    next is validation - @richardmax
+    http://www.philliphaydon.com/2013/10/semantic-ui-and-angularjs-basic-registration-form-with-validation/
+-->
+
+<h1>Create Post</h1>
+<div class="ui form segment">    
+    <div class="field">
+        <label for="GivenName">Post Title</label>  
+        <input name="postTitle" placeholder="Post Title" class="form-control" />
+    </div>
+    <div class="field" ng-show="tax.terms.length" ng-repeat="tax in taxonomies">
+        <label>{{tax.name}}</label><br/>
+        <select ng-model="chosenTax[tax.slug]" data-tax="{{tax.slug}}" class="form-control" multiple="multiple">
+            <option ng-repeat="term in tax.terms" value="{{term.ID}}">{{term.name}}</option>
+        </select>
+    </div>
+    <div class="field">
+        <textarea name="postContent" placeholder="Post Content" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="ui blue button">Submit</button>
+</div>
